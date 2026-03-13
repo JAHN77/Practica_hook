@@ -1,27 +1,31 @@
 // define que es cliente 
 "use client"
 
-// importa el contexto
+// importa el contexto y el enrutador
 import { useUser } from "../context/userContext"
-
+import {useRouter} from "next/navigation"
+ 
 export default function Home() {
 
-  const { user, login } = useUser()
+  const { login } = useUser()
+  const router = useRouter()
 
+   const handleLogin = () => {
+
+    login()
+
+    router.push("/dashboard")
+  }
   return (
 
     <div>
 
       <h1>Página principal</h1>
 
-      {user ? (
-        <h2>Bienvenido {user.name}</h2>
-      ) : (
-        <button onClick={login}>
+        <button onClick={handleLogin}>
           Iniciar sesión
         </button>
-      )}
-
+ 
     </div>
 
   )

@@ -1,13 +1,13 @@
 "use client"
 
 import { useRouter } from "next/navigation"
-import { useUser } from "../../context/userContext"
+import { useUserStore } from "../../store/userStore"
 
 export default function Dashboard() {
 
   const router = useRouter()
 
-  const { user } = useUser()
+  const user = useUserStore((state) => state.user)
 
   return (
 
